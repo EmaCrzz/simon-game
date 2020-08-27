@@ -138,7 +138,6 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   -webkit-appearance: none;
-  box-shadow: 0 5px 10px -5px var(--softBlue);
   transition: 0.1s all;
 }
 .u-button:active,
@@ -150,7 +149,7 @@ body {
 }
 
 .main {
-  height: 86vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -304,8 +303,42 @@ body {
   justify-content: space-between;
 }
 
+.input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 0.5em;
+  margin-right: 1rem;
+}
+
+.user {
+  background-color: var(--ligthCyan);
+  width: 100%;
+  flex-grow: 1;
+  min-width: 300px;
+}
+
+.input-control {
+  display: flex;
+  margin-top: 0.5rem;
+}
+.input-user-label {
+  font-size: 0.9rem;
+}
+.error {
+  margin-top: 0.2rem;
+  color: var(--red);
+}
+.form_username {
+  padding: 1rem 5rem 5rem;
+  border-radius: 0.5em;
+  background: var(--veryDarkBlue);
+}
+
 @media screen and (min-width: 768px) {
   .main {
+    height: 86vh;
     display: grid;
     grid-template-areas: "game ranking";
     grid-template-columns: 1fr 1fr;

@@ -19,6 +19,8 @@ const $buttonBlue = document.getElementById("blue");
 const $buttonYellow = document.getElementById("yellow");
 const $actionText = document.getElementById("action-text");
 const $ranking = document.getElementById("ranking");
+const $form = document.getElementById("form_username");
+const $lightboxMenu = document.getElementById("lightbox-menu");
 
 // show ranking
 displayRanking({ el: $ranking });
@@ -93,8 +95,7 @@ const check = () => {
     intervalId = setInterval(gameTurn, 800);
   } else {
     manageClicks();
-    updateRanking({ name: "Emanuel", level: turn - 1 });
-    displayRanking({ el: $ranking });
+    $lightboxMenu.classList.add("lightbox--show");
     $buttonRetry.classList.remove("u-is-hidden");
     $buttonStart.classList.add("bg-error");
     $actionText.classList.remove("u-text-xlarge");
@@ -181,4 +182,18 @@ $game.addEventListener("click", e => {
       check();
     });
   }
+});
+
+$form.addEventListener("submit", e => {
+  e.preventDefault();
+  const input = document.getElementById("input-user");
+  const error = document.getElementById("input-user-label");
+  error.classList.remove("error");
+  if (!input.value) {
+    error.classList.add("error");
+    return;
+  }
+  updateRanking({ name: input.value, level: turn - 1 });
+  displayRanking({ el: $ranking });
+  $lightboxMenu.classList.remove("lightbox--show");
 });
