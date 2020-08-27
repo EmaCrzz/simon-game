@@ -49,6 +49,13 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -105,6 +112,7 @@ body {
   color: var(--grayishBlue);
   line-height: 1.8;
   font-size: 0.9em;
+  margin: 0;
 }
 .u-is-hidden {
   display: none;
@@ -149,7 +157,7 @@ body {
   align-items: center;
 }
 
-.container {
+.game {
   position: relative;
   height: 330px;
   width: 330px;
@@ -285,4 +293,27 @@ body {
   position: absolute;
   bottom: -4rem;
   left: 40%;
+}
+
+.ranking {
+  margin-top: 4rem;
+}
+
+.item-ranking {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    display: grid;
+    grid-template-areas: "game ranking";
+    grid-template-columns: 1fr 1fr;
+  }
+  .game {
+    margin: auto;
+  }
+  .ranking {
+    margin-top: 0;
+  }
 }

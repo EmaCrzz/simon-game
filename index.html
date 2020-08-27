@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="static/css/index.css" />
+    <link rel="stylesheet" href="static/css/scroll-bar.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
       rel="stylesheet"
@@ -11,6 +12,19 @@
 
     <link rel="icon" sizes="128x128" href="static/icons/logo.jpg" />
     <link rel="apple-touch-icon" sizes="128x128" href="static/icons/logo.jpg" />
+
+    <audio id="clip1">
+      <source src="static/audio/HighTom_02.wav"></source>
+    </audio>
+    <audio id="clip2">
+      <source src="static/audio/LowTom_01.wav"></source>
+    </audio>
+    <audio id="clip3">
+      <source src="static/audio/MidTom_02.wav"></source>
+    </audio>
+    <audio id="clip4">
+      <source src="static/audio/Perc_02.wav"></source>
+    </audio>
 
     <title>Simon Game</title>
   </head>
@@ -20,11 +34,11 @@
       <hr />
     </div>
     <main class="u-wrapper main">
-      <div id="container" class="container">
-        <div data-value="1" id="green" class="button green"></div>
-        <div data-value="2" id="red" class="button red"></div>
-        <div data-value="3" id="blue" class="button blue"></div>
-        <div data-value="4" id="yellow" class="button yellow"></div>
+      <div id="game" class="game">
+        <div data-value="1" data-clip="1"  id="green" class="button green"></div>
+        <div data-value="2" data-clip="2" id="red" class="button red"></div>
+        <div data-value="3" data-clip="3" id="blue" class="button blue"></div>
+        <div data-value="4" data-clip="4" id="yellow" class="button yellow"></div>
         <div data-value="start" id="button-start" class="circle-info bg-listen">
           <span id="action-text" class="action-text u-avoid-clicks">START</span>
         </div>
@@ -35,6 +49,11 @@
         >
           Retry
         </button>
+      </div>
+      <div class="ranking u-wrapper">
+        <h1 class="u-h5 text-center">Ranking Simon</h1>
+        <hr />
+        <div id="ranking"></div>
       </div>
     </main>
     <script src="static/js/index.js" type="module"></script>

@@ -1,3 +1,5 @@
+import { displayRanking, updateRanking } from "./ranking.js";
+
 // game variables
 let turn = 1;
 let flash = 0;
@@ -8,7 +10,7 @@ let run = false;
 let compTurn;
 
 // HTML elements
-const $container = document.getElementById("container");
+const $game = document.getElementById("game");
 const $buttonStart = document.getElementById("button-start");
 const $buttonRetry = document.getElementById("button-retry");
 const $buttonGreen = document.getElementById("green");
@@ -16,6 +18,17 @@ const $buttonRed = document.getElementById("red");
 const $buttonBlue = document.getElementById("blue");
 const $buttonYellow = document.getElementById("yellow");
 const $actionText = document.getElementById("action-text");
+const $ranking = document.getElementById("ranking");
+
+// show ranking
+displayRanking({ el: $ranking });
+
+const clips = {
+  1: document.getElementById("clip1"),
+  2: document.getElementById("clip2"),
+  3: document.getElementById("clip3"),
+  4: document.getElementById("clip4")
+};
 
 // Logic Game
 const play = () => {
@@ -42,10 +55,22 @@ const gameTurn = () => {
   if (compTurn) {
     clearColor();
     setTimeout(() => {
-      if (order[flash] == 1) $buttonGreen.classList.add("green_active");
-      if (order[flash] == 2) $buttonRed.classList.add("red_active");
-      if (order[flash] == 3) $buttonBlue.classList.add("blue_active");
-      if (order[flash] == 4) $buttonYellow.classList.add("yellow_active");
+      if (order[flash] == 1) {
+        $buttonGreen.classList.add("green_active");
+        playClip(String(1));
+      }
+      if (order[flash] == 2) {
+        $buttonRed.classList.add("red_active");
+        playClip(String(2));
+      }
+      if (order[flash] == 3) {
+        $buttonBlue.classList.add("blue_active");
+        playClip(String(3));
+      }
+      if (order[flash] == 4) {
+        $buttonYellow.classList.add("yellow_active");
+        playClip(String(4));
+      }
       flash++;
     }, 200);
   }
@@ -67,6 +92,9 @@ const check = () => {
     manageClicks();
     intervalId = setInterval(gameTurn, 800);
   } else {
+    manageClicks();
+    updateRanking({ name: "Emanuel", level: turn - 1 });
+    displayRanking({ el: $ranking });
     $buttonRetry.classList.remove("u-is-hidden");
     $buttonStart.classList.add("bg-error");
     $actionText.classList.remove("u-text-xlarge");
@@ -101,8 +129,10 @@ const retryGame = () => {
   turn = 1;
   flash = 0;
   order = [];
-  playerOrder = [];
+  run = false;
   listenColor();
+  manageClicks();
+  playerOrder = [];
   $actionText.innerHTML = "START";
   $buttonRetry.classList.add("u-is-hidden");
   $actionText.classList.remove("u-text-medium");
@@ -120,24 +150,35 @@ const errorColor = () => {
   $buttonStart.classList.add("bg-error");
 };
 
+const playClip = async clipId => {
+  clips[clipId].play().then(() => {
+    return;
+  });
+};
+
 // Listener
-$container.addEventListener("click", e => {
+$game.addEventListener("click", e => {
   // In addition to controlling that there is a dataset value, you also have to take
   // into account if it is the computer's turn and if the game is running
   const value = e.target.dataset["value"];
-  console.log(value);
   if (value === "retry") {
     retryGame();
     return;
   }
+  if (value === "start" && run) return;
   if (value === "start" && !run) {
     $actionText.classList.add("u-text-xlarge");
     $actionText.innerHTML = turn;
     play();
     return;
   }
-  if (value) {
-    playerOrder.push(parseInt(value));
-    check();
+  if (value && run) {
+    const clip = e.target.dataset["clip"];
+    e.target.classList.add("u-avoid-clicks");
+    playClip(clip).then(() => {
+      e.target.classList.remove("u-avoid-clicks");
+      playerOrder.push(parseInt(value));
+      check();
+    });
   }
 });
