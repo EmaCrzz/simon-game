@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" sizes="128x128" href="static/icons/logo.jpg" />
+    <link rel="apple-touch-icon" sizes="128x128" href="static/icons/logo.jpg" />
+
+    <title>Simon Game</title>
+  </head>
+  <body>
+    <div class="u-wrapper">
+      <h1 class="u-h3 text-center">Simon Game</h1>
+      <hr />
+    </div>
+    <main class="u-wrapper main">
+      <div id="container" class="container">
+        <div data-value="1" id="green" class="button green"></div>
+        <div data-value="2" id="red" class="button red"></div>
+        <div data-value="3" id="blue" class="button blue"></div>
+        <div data-value="4" id="yellow" class="button yellow"></div>
+        <div data-value="start" id="button-start" class="circle-info bg-listen">
+          <span id="action-text" class="action-text u-avoid-clicks">START</span>
+        </div>
+        <button
+          id="button-retry"
+          class="u-button u-is-hidden retry-button"
+          data-value="retry"
+        >
+          Retry
+        </button>
+      </div>
+    </main>
+    <script src="static/js/index.js" type="module"></script>
+  </body>
+</html>
