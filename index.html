@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel='manifest' href='manifest.json'>
+
     <link rel="stylesheet" href="static/css/index.css" />
     <link rel="stylesheet" href="static/css/scroll-bar.css" />
     <link rel="stylesheet" href="static/css/ligthbox.css" />
@@ -33,6 +36,14 @@
     </audio>
 
     <title>Simon Game</title>
+
+    <script>
+      // Registering our Service worker
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js', { scope: './' })
+      }
+    </script>
+
   </head>
   <body>
     <div class="u-wrapper">
