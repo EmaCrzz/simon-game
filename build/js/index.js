@@ -11,6 +11,8 @@ let compTurn;
 
 // HTML elements
 const $game = document.getElementById("game");
+const $buttonHelp = document.getElementById("button-help");
+const $buttonAbout = document.getElementById("button-about");
 const $buttonStart = document.getElementById("button-start");
 const $buttonRetry = document.getElementById("button-retry");
 const $buttonGreen = document.getElementById("green");
@@ -19,8 +21,11 @@ const $buttonBlue = document.getElementById("blue");
 const $buttonYellow = document.getElementById("yellow");
 const $actionText = document.getElementById("action-text");
 const $ranking = document.getElementById("ranking");
-const $form = document.getElementById("form_username");
-const $lightboxMenu = document.getElementById("lightbox-menu");
+const $lightbox = document.getElementById("lightbox");
+const $lightboxHelp = document.getElementById("lightbox-help");
+const $closeLightboxHelp = document.getElementById("close-lightbox-help");
+const $lightboxAbout = document.getElementById("lightbox-about");
+const $closeLightboxAbout = document.getElementById("close-lightbox-about");
 
 // show ranking
 displayRanking({ el: $ranking });
@@ -97,7 +102,7 @@ const check = () => {
   } else {
     manageClicks();
     playClip("error");
-    $lightboxMenu.classList.add("lightbox--show");
+    showForm({ lightBox: $lightbox });
     $buttonRetry.classList.remove("u-is-hidden");
     $buttonStart.classList.add("bg-error");
     $actionText.classList.remove("u-text-xlarge");
@@ -139,6 +144,37 @@ const retryGame = () => {
   $actionText.innerHTML = "START";
   $buttonRetry.classList.add("u-is-hidden");
   $actionText.classList.remove("u-text-medium");
+};
+
+const showForm = ({ lightBox }) => {
+  lightBox.innerHTML = "";
+  const htmlForm = `<form id="form_username" class="form_username">
+    <h1 class="u-h5 text-center">Participate in the ranking</h1>
+    <hr />
+    <label id='input-user-label' for="input-user" class="input-user-label">
+      Enter your name
+    </label>
+    <div class="input-control">
+      <input id="input-user" class="input user" type="text" name="input-user" placeholder="Name" />
+      <button class="u-button">Submit</button>
+    </div>
+  </form>`;
+  lightBox.insertAdjacentHTML("beforeend", htmlForm);
+  lightBox.classList.add("lightbox--show");
+  const $form = document.getElementById("form_username");
+  $form.addEventListener("submit", e => {
+    e.preventDefault();
+    const input = document.getElementById("input-user");
+    const error = document.getElementById("input-user-label");
+    error.classList.remove("error");
+    if (!input.value) {
+      error.classList.add("error");
+      return;
+    }
+    updateRanking({ name: input.value, level: turn - 1 });
+    displayRanking({ el: $ranking });
+    lightBox.classList.remove("lightbox--show");
+  });
 };
 
 const listenColor = () => {
@@ -186,16 +222,17 @@ $game.addEventListener("click", e => {
   }
 });
 
-$form.addEventListener("submit", e => {
-  e.preventDefault();
-  const input = document.getElementById("input-user");
-  const error = document.getElementById("input-user-label");
-  error.classList.remove("error");
-  if (!input.value) {
-    error.classList.add("error");
-    return;
-  }
-  updateRanking({ name: input.value, level: turn - 1 });
-  displayRanking({ el: $ranking });
-  $lightboxMenu.classList.remove("lightbox--show");
+$buttonHelp.addEventListener("click", e => {
+  $lightboxHelp.classList.add("lightbox--show");
+});
+
+$closeLightboxHelp.addEventListener("click", e => {
+  $lightboxHelp.classList.remove("lightbox--show");
+});
+$buttonAbout.addEventListener("click", e => {
+  $lightboxAbout.classList.add("lightbox--show");
+});
+
+$closeLightboxAbout.addEventListener("click", e => {
+  $lightboxAbout.classList.remove("lightbox--show");
 });

@@ -147,6 +147,23 @@ body {
 .u-button:active {
   transform: scale(0.9);
 }
+.u-button-small {
+  padding: 0.5rem;
+  font-size: 0.5rem;
+}
+.u-button-small img {
+  width: 22px;
+}
+
+.u-a {
+  color: var(--ligthCyan);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .main {
   height: auto;

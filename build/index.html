@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/scroll-bar.css" />
   <link rel="stylesheet" href="css/ligthbox.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/about.css" />
 
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
 
@@ -47,8 +48,16 @@
 </head>
 
 <body>
-  <div class="u-wrapper">
+  <header class="u-wrapper header">
+    <button id="button-help" title="About" class="u-button u-button-small" >
+      <img src="icons/icon-help.png" alt="About">
+    </button>
     <h1 class="u-h3 text-center">Simon Game</h1>
+    <button id="button-about" title="About" class="u-button u-button-small" >
+      <img src="icons/icon-about.svg" alt="About">
+    </button>
+  </header>
+  <div class="u-wrapper">
     <hr />
   </div>
   <main class="u-wrapper main">
@@ -72,18 +81,45 @@
   </main>
 
   <div id="lightbox" class="lightbox"></div>
-  <div id="lightbox-menu" class=" lightbox">
-    <form id="form_username" class="form_username">
-      <h1 class="u-h5 text-center">Participate in the ranking</h1>
+  <div id="lightbox-about" class="lightbox lightbox--dark">
+    <div class="u-wrapper">
+      <h1 class="u-h3 text-center">About</h1>
       <hr />
-      <label id='input-user-label' for="input-user" class="input-user-label">
-        Enter your name
-      </label>
-      <div class="input-control">
-        <input id="input-user" class="input user" type="text" name="input-user" placeholder="Name" />
-        <button class="u-button">Submit</button>
+      <p class="u-p text-center">
+        This app is part of a series of videos made by sensey 
+        <a class="u-a" href="https://www.youtube.com/user/DorianDesigns" target="_blank" rel="noopener" >DorianDesigns</a>
+        on his playlist how to get a job as a web developer.
+        <a class="u-a" href="https://www.youtube.com/watch?v=5Gat7tIDyhY&list=PLROIqh_5RZeBcklcsQQaPfav5Lu-R-Mrt&index=10">
+          In practice N ° 3</a> we are asked to make a simon&nbsp;game and this is my result :)
+      </p>
+      <div class="about-footer">
+        <a href="https://emavillanueva-d1238.web.app/" target="_blank" rel="noopener" class="footer-logo"></a>
+        <button id="close-lightbox-about" class="u-button">
+          Close
+        </button>
       </div>
-    </form>
+
+    </div>
+  </div>
+  <div id="lightbox-help" class="lightbox lightbox--dark">
+    <div class="u-wrapper">
+      <h1 class="u-h3 text-center">Help</h1>
+      <hr />
+      <p class="u-p text-center">
+        The game creates a series of tones and lights and requires a user to repeat the sequence.
+        If the user succeeds, the series becomes progressively longer and more complex.
+        Once the user fails, the&nbsp;game&nbsp;is&nbsp;over.
+      </p>
+      <p class="u-p text-center">
+        ¡Remember the longest sequence to get to the top of the ranking!
+      </p>
+      <div class="about-footer">
+        <button id="close-lightbox-help" class="u-button">
+          Close
+        </button>
+      </div>
+
+    </div>
   </div>
 
   <footer id="contact" class="footer">

@@ -14,7 +14,7 @@ const displayRanking = ({ el }) => {
     });
   } else {
     el.innerHTML = "";
-    const nonRanking = `<p class="u-p text-center">No se han encontrado registros, se el primero.</p>`;
+    const nonRanking = `<p class="u-p text-center">No records found, be the first 🎉 </p>`;
     el.insertAdjacentHTML("beforeend", nonRanking);
   }
 };
