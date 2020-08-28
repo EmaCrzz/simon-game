@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel='manifest' href='manifest.json'>
+    <meta name="theme-color" content="#252b46"/>
 
     <link rel="stylesheet" href="static/css/index.css" />
     <link rel="stylesheet" href="static/css/scroll-bar.css" />
@@ -44,7 +45,7 @@
     <script>
       // Registering our Service worker
       if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('static/js/sw.js')
+        navigator.serviceWorker.register('sw.js', { registrationStrategy: 'registerImmediately' })
           .then(registration => {
             console.log('SW Registrado')
           })
