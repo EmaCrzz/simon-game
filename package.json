@@ -1,0 +1,20 @@
+{
+  "name": "simon-game",
+  "version": "1.0.0",
+  "description": "A simon game build with HTML CSS and JS",
+  "main": "sw.js",
+  "scripts": {
+    "serve": "http-server -p 3000 build -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmaCrzz/simon-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmaCrzz/simon-game/issues"
+  },
+  "homepage": "https://github.com/EmaCrzz/simon-game#readme"
+}
