@@ -350,3 +350,16 @@ body {
     margin-top: 0;
   }
 }
+@media screen and (max-width: 600px) {
+  .form_username {
+    padding: 1rem 3rem 3rem;
+  }
+  .input {
+    min-width: 200px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .form_username {
+    padding: 1rem;
+  }
+}
