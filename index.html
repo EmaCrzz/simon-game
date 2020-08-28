@@ -40,7 +40,13 @@
     <script>
       // Registering our Service worker
       if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js', { scope: './' })
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW Registrado')
+          })
+          .catch(registrationError => {
+            console.log('error SW: ', registrationError)
+        })
       }
     </script>
 
