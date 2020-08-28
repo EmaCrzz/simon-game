@@ -29,7 +29,8 @@ const clips = {
   1: document.getElementById("clip1"),
   2: document.getElementById("clip2"),
   3: document.getElementById("clip3"),
-  4: document.getElementById("clip4")
+  4: document.getElementById("clip4"),
+  error: document.getElementById("error")
 };
 
 // Logic Game
@@ -95,6 +96,7 @@ const check = () => {
     intervalId = setInterval(gameTurn, 800);
   } else {
     manageClicks();
+    playClip("error");
     $lightboxMenu.classList.add("lightbox--show");
     $buttonRetry.classList.remove("u-is-hidden");
     $buttonStart.classList.add("bg-error");
