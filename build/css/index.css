@@ -348,9 +348,17 @@ body {
   color: var(--red);
 }
 .form_username {
+  position: relative;
   padding: 1rem 5rem 5rem;
   border-radius: 0.5em;
   background: var(--veryDarkBlue);
+}
+.close-form {
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  border-radius: 50%;
+  display: flex;
 }
 
 @media screen and (min-width: 768px) {
